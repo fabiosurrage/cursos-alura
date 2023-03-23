@@ -1,0 +1,31 @@
+---
+- name: 'Instala pacotes de dependencia do sistema operacional'
+  apt: 
+    name: ['mysql-server-5.7', 'python-mysqldb', 'python-pymysql']
+    state: latest
+  become: yes
+- name: 'Cria banco de dados'
+  community.mysql.mysql_db:
+    name: "{{ wp_db_name }}"
+    check_implicit_admin: true
+    login_user: debian-sys-maint
+    login_password: 'KIrwQSTOoVQ8tdW9'
+    state: present
+- name: 'Cria usuario do MySQL'
+  mysql_user:
+    name: "{{ wp_db_user }}"
+    password: "{{ wp_db_pwd }}"
+    login_user: debian-sys-maint
+    login_password: 'KIrwQSTOoVQ8tdW9'
+    priv: "{{ wp_db_name }}.*:ALL"
+    host: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ wp_host_ip }}"
+- name: 'Configura MySql para aceitar conexao remota'
+  copy:
+    src: 'files/mysqld.cnf'
+    dest: '/etc/mysql/mysql.conf.d/mysqld.cnf'
+  become: yes
+  notify:
+    - restart mysql

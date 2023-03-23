@@ -1,0 +1,47 @@
+docker run -d -p 8080:80 nginx
+docker run -it ubuntu bash
+docker ps -a
+docker -t=0 stop
+docker start
+docker exec -it <id> bash
+docker pause / unpause
+docker rm <id> --force
+docker port 
+
+docker inspect IMAGE-ID
+docker history IMAGE-ID
+
+docker stop $(docker ps -q)
+docker rmi $(docker ps -aq) --force
+
+docker login -u aluradocker
+docker tag fabiosurrage/site:1.0 repofabio/site:1.0
+docker push repofabio/site:1.0
+
+docker run -it -v /home/fabio/volume-docker:/app ubuntu bash
+docker run -it -mount type=bind,source=/home/diretorio,target=/app ubuntu bash
+docker run -it --tmpfs=/app ubuntu bash
+docker run -it -mount type=tmpfs,source=/home/diretorio,target=/app ubuntu bash
+docker volume create xXx
+
+/var/lib/docker/volumes
+
+docker inspect CONTANER_ID
+
+docker network ls
+docker network creare --drive bridge minha-bridge
+
+docker run -d --name pong --network minha-bridge ubuntu sleep 1d
+
+Para ter DNS entre os containers é necessário criar uma network específica
+
+network *none* = contanier isolado, sem rede
+network *host" = usa a mesma network do host
+
+docker-compose up
+docker-compose down
+docker-compose ps
+
+
+SET GLOBAL max_connections=300
+Sevir@123

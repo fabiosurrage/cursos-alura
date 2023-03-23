@@ -1,0 +1,6 @@
+---
+- name: 'Instala pacotes de dependencia do sistema operacional'
+  apt: 
+    name: ['php7.2', 'apache2', 'libapache2-mod-php7.2', 'php7.2-gd', 'php7.2-mysql', 'python-mysqldb', 'mysql-client-core-5.7']
+    state: latest
+  become: yes

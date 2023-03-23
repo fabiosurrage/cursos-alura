@@ -1,0 +1,5 @@
+[wordpress]
+192.168.56.3 ansible_user="vagrant" ansible_ssh_private_key_file="/home/fabio/vscode/curso-alura/wordpress_com_ansible/.vagrant/machines/wordpress/virtualbox/private_key"
+
+[database]
+192.168.56.4 ansible_user="vagrant" ansible_ssh_private_key_file="/home/fabio/vscode/curso-alura/wordpress_com_ansible/.vagrant/machines/mysql/virtualbox/private_key"

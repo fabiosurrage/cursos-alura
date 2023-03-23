@@ -1,0 +1,7 @@
+---
+wp_db_name: wordpress_db
+wp_db_user: wordpress_user
+wp_db_pwd: '123456'
+wp_installation_dir: '/var/www/wordpress'
+wp_host_ip: '192.168.56.3'
+wp_db_ip: '192.168.56.4'
